@@ -1,2 +1,385 @@
 # Sparklab
 It was my first html and css maded portfolio 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sanjay - Vortix Spark Lab</title>
+<style>
+:root {
+--primary-color: #003366;
+--accent-color: #00a8e8;
+--bg-color: #f4f7f6;
+--text-color: #333333;
+--white: #ffffff;
+}
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+html {
+scroll-behavior: smooth;
+}
+body {
+background-color: var(--bg-color);
+color: var(--text-color);
+line-height: 1.6;
+}
+header {
+background-color: var(--primary-color);
+color: var(--white);
+padding: 1rem 0;
+box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+position: sticky;
+top: 0;
+z-index: 1000;
+}
+nav {
+display: flex;
+justify-content: space-between;
+align-items: center;
+max-width: 1200px;
+margin: auto;
+padding: 0 20px;
+}
+.logo {
+font-size: 1.8rem;
+font-weight: bold;
+color: var(--white);
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+.logo span {
+color: var(--accent-color);
+}
+.nav-links {
+list-style: none;
+display: flex;
+gap: 25px;
+}
+.nav-links li a {
+color: var(--white);
+text-decoration: none;
+font-weight: 500;
+transition: color 0.3s;
+font-size: 1.1rem;
+}
+.nav-links li a:hover {
+color: var(--accent-color);
+}
+.dropdown {
+position: relative;
+}
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: var(--white);
+min-width: 150px;
+box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+z-index: 1;
+border-radius: 5px;
+overflow: hidden;
+top: 100%;
+left: 0;
+}
+.dropdown-content a {
+color: var(--text-color) !important;
+padding: 12px 16px;
+display: block;
+border-bottom: 1px solid #eee;
+}
+.dropdown-content a:hover {
+background-color: var(--accent-color);
+color: var(--white) !important;
+}
+.dropdown:hover .dropdown-content {
+display: block;
+}
+.hero {
+background: linear-gradient(135deg, #003366 0%, #005b9f 100%);
+color: var(--white);
+text-align: center;
+padding: 80px 20px;
+border-bottom: 5px solid var(--accent-color);
+}
+.hero h1 {
+font-size: 3.5rem;
+margin-bottom: 15px;
+}
+.hero p {
+font-size: 1.3rem;
+max-width: 700px;
+margin: 0 auto 20px auto;
+opacity: 0.9;
+}
+/* Live Clock Styling */
+.clock-container {
+display: inline-block;
+background: rgba(0, 0, 0, 0.3);
+padding: 10px 25px;
+border-radius: 50px;
+font-size: 1.5rem;
+font-weight: bold;
+letter-spacing: 1px;
+border: 1px solid var(--accent-color);
+margin-top: 10px;
+box-shadow: 0 4px 15px rgba(0, 168, 232, 0.2);
+}
+.container {
+max-width: 1000px;
+margin: 50px auto;
+padding: 0 20px;
+display: grid;
+gap: 30px;
+}
+.card {
+background: var(--white);
+border-radius: 10px;
+padding: 35px;
+box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+border-left: 6px solid var(--accent-color);
+transition: transform 0.3s ease;
+}
+.card:hover {
+transform: translateY(-5px);
+}
+.card h2 {
+color: var(--primary-color);
+margin-bottom: 20px;
+font-size: 2rem;
+border-bottom: 2px solid #eee;
+padding-bottom: 10px;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.card ul {
+list-style-type: none;
+}
+.card ul li {
+position: relative;
+padding-left: 25px;
+margin-bottom: 12px;
+font-size: 1.15rem;
+}
+.card ul li::before {
+content: '✓';
+color: var(--accent-color);
+position: absolute;
+left: 0;
+font-weight: bold;
+}
+.project-item {
+margin-bottom: 20px;
+padding-bottom: 15px;
+border-bottom: 1px dashed #ddd;
+}
+.project-item:last-child {
+border-bottom: none;
+margin-bottom: 0;
+padding-bottom: 0;
+}
+.project-title {
+font-size: 1.3rem;
+font-weight: bold;
+margin-bottom: 5px;
+}
+.project-title a {
+color: var(--primary-color);
+text-decoration: none;
+transition: color 0.3s ease;
+}
+.project-title a:hover {
+color: var(--accent-color);
+text-decoration: underline;
+}
+/* Contact Form Styling */
+.form-group {
+margin-bottom: 20px;
+}
+.form-group label {
+display: block;
+margin-bottom: 8px;
+font-weight: 600;
+color: var(--primary-color);
+}
+.form-group input, .form-group textarea {
+width: 100%;
+padding: 12px;
+border: 1px solid #ccc;
+border-radius: 5px;
+font-size: 1rem;
+outline: none;
+transition: border-color 0.3s;
+}
+.form-group input:focus, .form-group textarea:focus {
+border-color: var(--accent-color);
+}
+.submit-btn {
+background-color: var(--primary-color);
+color: var(--white);
+padding: 12px 25px;
+border: none;
+border-radius: 5px;
+font-size: 1.1rem;
+font-weight: bold;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+.submit-btn:hover {
+background-color: var(--accent-color);
+}
+.footer {
+text-align: center;
+padding: 40px 20px;
+background-color: var(--primary-color);
+color: var(--white);
+margin-top: 60px;
+}
+.footer a {
+color: var(--accent-color);
+text-decoration: none;
+font-weight: bold;
+font-size: 1.2rem;
+}
+.footer a:hover {
+text-decoration: underline;
+}
+</style>
+</head>
+<body>
+<header>
+<nav>
+<div class="logo">Vortix <span>Spark Lab</span></div>
+<ul class="nav-links">
+<li><a href="#home">Home</a></li>
+<li class="dropdown">
+<a href="#classes">Classes ▾</a>
+<div class="dropdown-content">
+<a href="#maths">Maths</a>
+<a href="#art">Art</a>
+</div>
+</li>
+<li><a href="#activities">Activities</a></li>
+<li><a href="#games">Games & Tools</a></li>
+</ul>
+</nav>
+</header>
+<section id="home" class="hero">
+<h1>Hi, I am Sanjay</h1>
+<p>Welcome to my digital space. Exploring the world of computers, design, and software engineering.</p>
+<!-- Live Clock Container -->
+<div class="clock-container" id="live-clock">00:00:00 AM</div>
+</section>
+<div class="container">
+<!-- About Me -->
+<div class="card" id="about">
+<h2>About Me</h2>
+<ul>
+<li>I am from UP India.</li>
+<li>I am Sanjay Singh from Etawah.</li>
+<li>I am reading in class 8th in Seven Hills.</li>
+<li>I am a professional in Photoshop and computer.</li>
+</ul>
+</div>
+<!-- Classes Section -->
+<div class="card" id="maths">
+<h2>Maths Classes</h2>
+<p>Insights, homework, formulas, and math problem-solving tools go here.</p>
+</div>
+<div class="card" id="art">
+<h2>Art Classes</h2>
+<p>Showcasing my digital drawings, graphic design assignments, and creative vector projects.</p>
+</div>
+<!-- Activities & Projects Section -->
+<div class="card" id="activities">
+<h2>My Activities & Innovations</h2>
+<div class="project-item">
+<div class="project-title">🔬 Homemade Waste Material Microscope</div>
+<p>Built a fully functional compound microscope using everyday waste materials, white plastic tubes, and convex lenses. Successfully adjusted focal lengths to magnify tiny structures!</p>
+</div>
+<div class="project-item">
+<div class="project-title">🤖 Robotics & Electronics Exploration</div>
+<p>Designing circuits, understanding hardware components, and working on micro-innovation projects to bring automation ideas to life.</p>
+</div>
+<div class="project-item">
+<div class="project-title">⚡ Electricity & Battery Tech Projects</div>
+<p>Experimenting with power solutions, including building custom 3S lithium-ion battery packs (11.1V), exploring series wiring, and learning DIY electronics safety.</p>
+</div>
+</div>
+<!-- Games & Creative Tools -->
+<div class="card" id="games">
+<h2>Games & Creative Tools</h2>
+<div class="project-item">
+<div class="project-title"><a href="https://poki.com" target="_blank">🎮 Poki</a></div>
+<p>A massive online playground! You can play thousands of free web games directly in your browser without any downloads.</p>
+</div>
+<div class="project-item">
+<div class="project-title"><a href="https://playhop.com" target="_blank">🕹️ Playhop</a></div>
+<p>An amazing collection of browser-based games. From action to puzzles, it's a great place to discover and play games instantly.</p>
+</div>
+<div class="project-item">
+<div class="project-title"><a href="https://photopea.com" target="_blank">🎨 Photopea</a></div>
+<p>A powerful, free web-based graphics editor. Perfect for my Photoshop skills, allowing PSD editing and professional designing right in the browser.</p>
+</div>
+<div class="project-item">
+<div class="project-title"><a href="https://vectorpea.com" target="_blank">✒️ Vectorpea</a></div>
+<p>An online vector graphics editor similar to Illustrator. Great for creating scalable vector designs, logos, and digital artwork.</p>
+</div>
+</div>
+<!-- Goals -->
+<div class="card" id="goals">
+<h2>Goals</h2>
+<ul>
+<li>Becoming a world-famous software engineer.</li>
+</ul>
+</div>
+<!-- Contact Form Card -->
+<div class="card" id="contact">
+<h2>📩 Send Me a Message</h2>
+<form action="https://formspree.io" method="POST">
+<div class="form-group">
+<label for="name">Your Name</label>
+<input type="text" id="name" name="name" placeholder="Enter your name" required>
+</div>
+<div class="form-group">
+<label for="email">Your Email</label>
+<input type="email" id="email" name="email" placeholder="Enter your email" required>
+</div>
+<div class="form-group">
+<label for="message">Message</label>
+<textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+</div>
+<button type="submit" class="submit-btn">Send Message</button>
+</form>
+</div>
+</div>
+<footer class="footer">
+<h2>Get in Touch</h2>
+<p>Email me at: <a href="mailto:sanjay201220@outlook.com">sanjay201220@outlook.com</a></p>
+<p>© 2026 Sanjay Singh - Vortix Spark Lab. All rights reserved.</p>
+</footer>
+<!-- JavaScript Code for Live Clock -->
+<script>
+function updateClock() {
+const clockElement = document.getElementById('live-clock');
+const now = new Date();
+let hours = now.getHours();
+const minutes = String(now.getMinutes()).padStart(2, '0');
+const seconds = String(now.getSeconds()).padStart(2, '0');
+const ampm = hours >= 12 ? 'PM' : 'AM';
+hours = hours % 12;
+hours = hours ? hours : 12; // The hour '0' should be '12'
+const timeString = `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
+clockElement.textContent = timeString;
+}
+// Run clock immediately on page load
+updateClock();
+// Update the clock every 1 second (1000 milliseconds)
+setInterval(updateClock, 1000);
+</script>
+</body>
+</html>
